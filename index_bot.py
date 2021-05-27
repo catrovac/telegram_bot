@@ -101,7 +101,7 @@ while True:
                 zx1 = xz[0]
                 print(zx1, bot_name)
                 if '0.00022' in zx1 and bot_name != 'DOGE Click Bot' and bot_name != 'BTC Click Bot':
-                    await client.send_message(bot_name, 'withraw')
+                    await client.send_message(bot_name, 'Withdraw')
                     time.sleep(1)
                     vals = vallet[qx]
                     await client.send_message(bot_name, vals)
@@ -110,7 +110,7 @@ while True:
                     time.sleep(1)
                     await client.send_message(bot_name, 'confirm')
                 elif bot_name == 'DOGE Click Bot' and '2.1' in zx1:
-                    await client.send_message(bot_name, 'withraw')
+                    await client.send_message(bot_name, 'Withdraw')
                     time.sleep(1)
                     zxbot = list(bot_name.split())
                     await client.send_message(bot_name, vallet[zxbot[0]])
@@ -119,10 +119,10 @@ while True:
                     time.sleep(1)
                     await client.send_message(bot_name, 'confirm')
                 elif bot_name == 'BTC Click Bot' and '0.00005' in zx1:
-                    # await client.send_message(bot_name, 'withraw')
+                    # await client.send_message(bot_name, 'Withdraw')
                     time.sleep(1)
                     x_bot = list(bot_name.split())
-                    await client.send_message(bot_name, 'withraw')
+                    await client.send_message(bot_name, 'Withdraw')
                     time.sleep(1)
                     await client.send_message(bot_name, vallet[x_bot[0]])
                     time.sleep(1)
