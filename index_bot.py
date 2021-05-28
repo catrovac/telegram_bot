@@ -36,55 +36,54 @@ while True:
 
         for bot_name in bot:
             try:
-                if count < 1000:
-                    while True:
-                        await client.send_message(bot_name, '/visit')
-                        time.sleep(2)
-                        messages = await client.get_messages(bot_name, limit=1)
-                        text_button = messages[0].reply_markup.rows[0].buttons[0].text
-                        rec_url = messages[0].reply_markup.rows[0].buttons[0].url
-                        rec = messages[0].reply_markup.rows[1].buttons[1].data
-                        rec_id = messages[0].id
-                        if rec_url:
-                            print(bot_name)
-                            if text_button:
-                                s = requests.session()
-                                result = s.get(rec_url, allow_redirects=True).text
-                                time.sleep(2)
-                                soup = bs4.BeautifulSoup(result, 'lxml')
-                                data = soup.find('title')
-                                datax = ''.join(data)
-                                print(datax)
-                                # print(soup)
-                                # times = await client.get_messages(bot_name, limit=1)
-                                # print(times)
-                                s.cookies.keys()
-                                s.cookies.clear()
-                                if 'just' in datax.lower():
-                                    print(f'на страничке {rec_url} есть капча, открываю браузер по умолчанию')
-                                    os.system(f"start \"\" {rec_url}")
-                                    time.sleep(6)
-                                    msg2 = await client.get_messages(bot_name, limit=1)
-                                    msg2x = msg2[0].message
-                                    if 'Please stay on the site for at' in str(msg2x):
-                                        time.sleep(16)
-                                    else:
-                                        time.sleep(68)
-                                    # print(msg2x)
-                                    os.system("TASKKILL /F /IM chrome.exe")
-                                    os.system(("TASKKILL /F /IM software_reporter_tool.exe"))
+                while True:
+                    await client.send_message(bot_name, '/visit')
+                    time.sleep(2)
+                    messages = await client.get_messages(bot_name, limit=1)
+                    text_button = messages[0].reply_markup.rows[0].buttons[0].text
+                    rec_url = messages[0].reply_markup.rows[0].buttons[0].url
+                    rec = messages[0].reply_markup.rows[1].buttons[1].data
+                    rec_id = messages[0].id
+                    if rec_url:
+                        print(bot_name)
+                        if text_button:
+                            s = requests.session()
+                            result = s.get(rec_url, allow_redirects=True).text
+                            time.sleep(2)
+                            soup = bs4.BeautifulSoup(result, 'lxml')
+                            data = soup.find('title')
+                            datax = ''.join(data)
+                            print(datax)
+                            # print(soup)
+                            # times = await client.get_messages(bot_name, limit=1)
+                            # print(times)
+                            s.cookies.keys()
+                            s.cookies.clear()
+                            if 'just' in datax.lower():
+                                print(f'на страничке {rec_url} есть капча, открываю браузер по умолчанию')
+                                os.system(f"start \"\" {rec_url}")
+                                time.sleep(6)
+                                msg2 = await client.get_messages(bot_name, limit=1)
+                                msg2x = msg2[0].message
+                                if 'Please stay on the site for at' in str(msg2x):
+                                    time.sleep(16)
                                 else:
-                                    firefox = webdriver.Firefox()
-                                    firefox.get(rec_url)
-                                    time.sleep(5)
-                                    msg2 = await client.get_messages(bot_name, limit=1)
-                                    msg2x = msg2[0].message
-                                    if 'Please stay on the site for at' in str(msg2x):
-                                        time.sleep(16)
-                                    else:
-                                        time.sleep(68)
-                                    firefox.close()
-                                    firefox.quit()
+                                    time.sleep(68)
+                                # print(msg2x)
+                                os.system("TASKKILL /F /IM chrome.exe")
+                                os.system(("TASKKILL /F /IM software_reporter_tool.exe"))
+                            else:
+                                firefox = webdriver.Firefox()
+                                firefox.get(rec_url)
+                                time.sleep(5)
+                                msg2 = await client.get_messages(bot_name, limit=1)
+                                msg2x = msg2[0].message
+                                if 'Please stay on the site for at' in str(msg2x):
+                                    time.sleep(16)
+                                else:
+                                    time.sleep(68)
+                                firefox.close()
+                                firefox.quit()
             except ConnectionError as connect:
                 print(connect)
             except AttributeError as atribute:
