@@ -43,7 +43,7 @@ if z == 'y' or z == 'Y' or z == 'н' or z == 'Н':
     db = sqlite3.connect('account.db')
     cursor = db.cursor()
     k = int(input('Сколько пользователей Вы хотите добавить?  '))
-    for q in range(k + 1):
+    for q in range(k):
         name = input('Введите имя сессии :')
         api_id = int(input('Введите api :'))
         api_hash = input('Введите hash :')
@@ -52,6 +52,8 @@ if z == 'y' or z == 'Y' or z == 'н' or z == 'Н':
         print(f'Пользователь {name} {api_id} {api_hash} успешно добавлен!')
         q += 1
     print(q, 'Новых пользователей добавлено')
+    data = cursor.execute("""SELECT * FROM user """)
+    content = data.fetchall()
 else:
     data = cursor.execute("""SELECT * FROM user """)
     content = data.fetchall()
@@ -78,4 +80,3 @@ for name in val_c:
     vallet[name[0]] = name[1]
 #print(vallet)
 db.close()
-
