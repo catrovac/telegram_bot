@@ -13,7 +13,7 @@ print("BOT by C.A.T.R.O.V.A.C.E.R")
 time.sleep(0.6)
 
 print(
-    "---------------------------------------------------------------------------------------------------------------------------------------------")
+    "---------------------------------------------------------------------------------------------------------------------------------------")
 print()
 print(a)
 time.sleep(0.2)
@@ -31,7 +31,8 @@ print(j)
 time.sleep(0.2)
 print('\n')
 print(
-    "---------------------------------------------------------------------------------------------------------------------------------------------")
+    "-------------------------------------------------------------------------------------------------------------------------------------")
+
 
 db = sqlite3.connect('account.db')
 cursor = db.cursor()
@@ -49,6 +50,7 @@ if z == 'y' or z == 'Y' or z == 'н' or z == 'Н':
         api_hash = input('Введите hash :')
         cursor.execute("""INSERT INTO user VALUES(?,?,?)""", (name, api_id, api_hash))
         db.commit()
+        client = TelegramClient(name,api_id, api_hash).start()
         print(f'Пользователь {name} {api_id} {api_hash} успешно добавлен!')
         q += 1
     print(q, 'Новых пользователей добавлено')
@@ -79,4 +81,11 @@ vallet = {}
 for name in val_c:
     vallet[name[0]] = name[1]
 #print(vallet)
+
+    
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
+    'Accept': '*/*'
+        }
 db.close()
+
