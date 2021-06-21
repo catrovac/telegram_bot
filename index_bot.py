@@ -97,7 +97,7 @@ while True:
                 qx = bot_name.split(" ")[0]
                 print(qx)
                 q = str(ballx)
-                x = q.replace('Available balance:', '').split()[0]
+                x = q.replace('Available balance:', '').split()[0]#
                 print(x, bot_name)
                 if float(x) > float(0.00022) and bot_name != 'DOGE Click Bot' and bot_name != 'BTC Click Bot':
                     await client.send_message(bot_name, 'Withdraw')
